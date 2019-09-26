@@ -14,6 +14,8 @@ MARGIN = 20
 INITIAL_VELOCITY = 3
 NUM_ANIMALS = 5
 SCREEN_TITLE = "Collision Exercise"
+MASS = 1.05
+FRICTION = 0.9
 
    
 
@@ -51,31 +53,41 @@ class Window(arcade.Window):
             collisions = a.collides_with_list(self.animal_list)
             for c in collisions:
                 if a.center_x > c.center_x:
-                    a.dx = abs(a.dx) * -1
+                    a.dx = abs(a.dx) * -1 * MASS
                 if a.center_x < c.center_x:
-                    a.dx = abs(a.dx)
+                    a.dx = abs(a.dx) * MASS
                 if a.center_y > c.center_y:
-                    a.dy = abs(a.dy)
+                    a.dy = abs(a.dy) * MASS
                 if a.center_y < c.center_y:
-                    a.dy = abs(a.dy) * -1
+                    a.dy = abs(a.dy) * -1 * MASS
 
 
 
             if a.center_x <= MARGIN:
                 a.center_x = MARGIN
                 a.dx = abs(a.dx)
+                a.dx *= FRICTION
+                a.dy *= FRICTION 
             if a.center_x >= SCREEN_WIDTH - MARGIN:
                 a.center_x = SCREEN_WIDTH - MARGIN
                 a.dx = abs(a.dx)*-1
+                a.dx *= FRICTION
+                a.dy *= FRICTION 
             if a.center_x <= MARGIN:
                 a.center_x = MARGIN
                 a.dx = abs(a.dx)
+                a.dx *= FRICTION
+                a.dy *= FRICTION 
             if a.center_y <= MARGIN:
                 a.center_y = MARGIN
                 a.dy = abs(a.dy)
+                a.dx *= FRICTION
+                a.dy *= FRICTION 
             if a.center_y >= SCREEN_HEIGHT - MARGIN:
                 a.center_y = SCREEN_HEIGHT - MARGIN
                 a.dy = abs(a.dy)*-1
+                a.dx *= FRICTION
+                a.dy *= FRICTION 
 
 
     def on_draw(self):
