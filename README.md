@@ -1,5 +1,6 @@
 # E05b-Physics
 Exploring 2D physics and collisions.
 
-*main3.py* implements the worst, most-naive version of collision physics using the built-in sprite collision detection. Assuming all the animal heads have the same mass, adjust lines 53–60 to make the collisions more realistic.
-
+main1.py is a program that simulates gravity by making the balls fall.
+main2.py also simulates gravity, but also gives the balls a bounce
+main3.py features animals that, when they bounce together, will speed up in their movement.  When they collide with the margins, they will slow down slightly with friction.
